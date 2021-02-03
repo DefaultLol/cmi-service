@@ -3,10 +3,7 @@ package com.app.web;
 import com.app.cmi_service.ClientCreationRequest;
 import com.app.cmi_service.ClientCreationResponse;
 import com.app.entity.Bill;
-import com.app.payments_service.GetFormsRequest;
-import com.app.payments_service.GetFormsResponse;
-import com.app.payments_service.PaymentRequest;
-import com.app.payments_service.PaymentResponse;
+import com.app.payments_service.*;
 import com.app.services.BillService;
 import com.app.services.FormService;
 import com.app.services.PaymentService;
@@ -18,6 +15,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import javax.xml.datatype.DatatypeConfigurationException;
+import java.util.List;
 
 @Endpoint
 public class PaymentController {
@@ -43,6 +41,19 @@ public class PaymentController {
         Bill bill = billService.getBill(request.getCreancier(),request.getBillID());
         paymentService.paymentRequest(bill,request.getAccountID(),request.getCreancier());
         response.setResponse("Request waiting for approval");
+        return response;
+    }
+
+    @PayloadRoot(namespace = "http://app.com/payments-service",
+            localPart = "getBatchedPaymentRequest")
+    @ResponsePayload
+    public GetBatchedPaymentResponse getBatchedPayment(@RequestPayload GetBatchedPaymentRequest request) throws DatatypeConfigurationException {
+        GetBatchedPaymentResponse response=new GetBatchedPaymentResponse();
+        List<PaymentOpInfo> payments=paymentService.getBatchedPayment(request.getAccountID());
+        for(PaymentOpInfo payment:payments){
+            response.getPayments().add(payment);
+        }
+
         return response;
     }
 }

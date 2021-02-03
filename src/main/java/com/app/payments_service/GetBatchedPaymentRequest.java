@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="response" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="accountID" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "response"
+    "accountID"
 })
-@XmlRootElement(name = "paymentResponse")
-public class PaymentResponse {
+@XmlRootElement(name = "getBatchedPaymentRequest")
+public class GetBatchedPaymentRequest {
 
     @XmlElement(required = true)
-    protected String response;
+    protected String accountID;
 
     /**
-     * Obtient la valeur de la propriété response.
+     * Obtient la valeur de la propriété accountID.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getResponse() {
-        return response;
+    public String getAccountID() {
+        return accountID;
     }
 
     /**
-     * Définit la valeur de la propriété response.
+     * Définit la valeur de la propriété accountID.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setResponse(String value) {
-        this.response = value;
+    public void setAccountID(String value) {
+        this.accountID = value;
     }
 
 }

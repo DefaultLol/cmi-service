@@ -10,6 +10,7 @@ import com.app.entity.*;
 import com.app.payments_service.BillInfo;
 import com.app.payments_service.ClientPaymentInfo;
 import com.app.payments_service.FormInfo;
+import com.app.payments_service.PaymentOpInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -111,6 +112,16 @@ public class ClassExchanger {
         Bill bill=new Bill(info.getId(),info.getAmount(),
                 null,null,false,false,info.getCodeCreance());
         return bill;
+    }
+
+    public PaymentOpInfo generatePaymentOpInfo(PaymentOp payment) throws DatatypeConfigurationException {
+        PaymentOpInfo info=new PaymentOpInfo();
+        info.setAccountID(payment.getAccountID());
+        info.setBill(generateBillInfo(payment.getBill()));
+        info.setCreancier(payment.getCreancier());
+        info.setId(payment.getId());
+        info.setStatus(payment.getStatus());
+        return info;
     }
 
 

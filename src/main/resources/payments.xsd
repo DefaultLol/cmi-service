@@ -91,5 +91,32 @@
         </xsd:complexType>
     </xsd:element>
 
+    <!-- get batched payments -->
+    <xsd:element name="getBatchedPaymentRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="accountID" type="xsd:string" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getBatchedPaymentResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="payments" nillable="true" type="tns:paymentOpInfo"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="paymentOpInfo">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string"/>
+            <xsd:element name="bill" type="tns:billInfo" />
+            <xsd:element name="accountID" type="xsd:string" />
+            <xsd:element name="creancier" type="xsd:string" />
+            <xsd:element name="status" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+
 
 </xsd:schema>

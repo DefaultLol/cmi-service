@@ -21,7 +21,7 @@ public class PopulateDB {
         if(creanceRepository.findAll().size() == 0){
             // iam
             Creance iamCreance1=new Creance(null,"internet","iam1001","/endpoint");
-            Creance iamCreance2=new Creance(null,"phone","iam1003","/endpoint");
+            Creance iamCreance2=new Creance(null,"telephone","iam1002","/endpoint");
             Creance iamCreance3=new Creance(null,"fixe","iam1003","/endpoint");
 
             List<Creance> iamCreances=new ArrayList<>();
@@ -36,7 +36,7 @@ public class PopulateDB {
 
             // inwi
             Creance inwiCreance1=new Creance(null,"internet","inwi2001","/endpoint");
-            Creance inwiCreance2=new Creance(null,"phone","inwi2003","/endpoint");
+            Creance inwiCreance2=new Creance(null,"telephone","inwi2002","/endpoint");
             Creance inwiCreance3=new Creance(null,"fixe","inwi2003","/endpoint");
 
             List<Creance> inwiCreances=new ArrayList<>();
@@ -50,8 +50,8 @@ public class PopulateDB {
             creancierRepository.save(inwiCreancier);
 
             //laydec
-            Creance laydecCreance1=new Creance(null,"electricité","reades3001","/endpoint");
-            Creance laydecCreance2=new Creance(null,"eau","rades3002","/endpoint");
+            Creance laydecCreance1=new Creance(null,"electricite","lydec3001","/endpoint");
+            Creance laydecCreance2=new Creance(null,"eau","lydec3002","/endpoint");
 
             List<Creance> laydecCreances=new ArrayList<>();
             laydecCreances.add(laydecCreance1);
@@ -59,7 +59,7 @@ public class PopulateDB {
 
             creanceRepository.saveAll(laydecCreances);
 
-            Creancier radesCreancier=new Creancier(null,"laydeec","lydec3000","fournisseur",laydecCreances);
+            Creancier radesCreancier=new Creancier(null,"lydec","lydec3000","fournisseur",laydecCreances);
             creancierRepository.save(radesCreancier);
         }
     }

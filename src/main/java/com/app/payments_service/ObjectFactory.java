@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2021.02.02 à 12:25:41 AM WET 
+// Généré le : 2021.02.03 à 08:39:44 PM WET 
 //
 
 
@@ -53,6 +53,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetBatchedPaymentRequest }
+     * 
+     */
+    public GetBatchedPaymentRequest createGetBatchedPaymentRequest() {
+        return new GetBatchedPaymentRequest();
+    }
+
+    /**
      * Create an instance of {@link GetFormsRequest }
      * 
      */
@@ -90,6 +98,22 @@ public class ObjectFactory {
      */
     public FormInfo createFormInfo() {
         return new FormInfo();
+    }
+
+    /**
+     * Create an instance of {@link GetBatchedPaymentResponse }
+     * 
+     */
+    public GetBatchedPaymentResponse createGetBatchedPaymentResponse() {
+        return new GetBatchedPaymentResponse();
+    }
+
+    /**
+     * Create an instance of {@link PaymentOpInfo }
+     * 
+     */
+    public PaymentOpInfo createPaymentOpInfo() {
+        return new PaymentOpInfo();
     }
 
     /**

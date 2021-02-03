@@ -4,11 +4,16 @@ import com.app.dao.PaymentOpRespository;
 import com.app.entity.Bill;
 import com.app.entity.PaymentOp;
 import com.app.payments_service.BillInfo;
+import com.app.payments_service.PaymentOpInfo;
 import com.app.utils.AddCreditRequest;
 import com.app.utils.ClassExchanger;
 import com.app.utils.DateConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PaymentService {
@@ -17,6 +22,7 @@ public class PaymentService {
     @Autowired private AccountService accountService;
     @Autowired private AuthService authService;
     @Autowired private BillService billService;
+    @Autowired private ClassExchanger exchanger;
 
     public void paymentRequest(Bill bill, String accountID, String creancier){
         String token="";
@@ -34,6 +40,15 @@ public class PaymentService {
         catch(Exception e){
             System.out.println("Error auth");
         }
+    }
+
+    public List<PaymentOpInfo> getBatchedPayment(String accountID) throws DatatypeConfigurationException {
+        List<PaymentOp> payments=repo.findAllByAccountIDAndStatus(accountID,"pending");
+        List<PaymentOpInfo> response=new ArrayList<>();
+        for(PaymentOp payment:payments){
+            response.add(exchanger.generatePaymentOpInfo(payment));
+        }
+        return response;
     }
 
 

@@ -6,7 +6,7 @@
 //
 
 
-package com.app.cmi_service;
+package com.app.payments_service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,21 +15,20 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour accountInfo complex type.
+ * <p>Classe Java pour paymentOpInfo complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="accountInfo">
+ * &lt;complexType name="paymentOpInfo">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="accountNumber" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="amount" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="credit" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="strCreationDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="accountType" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="bill" type="{http://app.com/payments-service}billInfo"/>
+ *         &lt;element name="accountID" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="creancier" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -39,26 +38,25 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "accountInfo", propOrder = {
+@XmlType(name = "paymentOpInfo", propOrder = {
     "id",
-    "accountNumber",
-    "amount",
-    "credit",
-    "strCreationDate",
-    "accountType"
+    "bill",
+    "accountID",
+    "creancier",
+    "status"
 })
-public class AccountInfo {
+public class PaymentOpInfo {
 
     @XmlElement(required = true)
     protected String id;
     @XmlElement(required = true)
-    protected String accountNumber;
-    protected double amount;
-    protected double credit;
+    protected BillInfo bill;
     @XmlElement(required = true)
-    protected String strCreationDate;
+    protected String accountID;
     @XmlElement(required = true)
-    protected String accountType;
+    protected String creancier;
+    @XmlElement(required = true)
+    protected String status;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -85,107 +83,99 @@ public class AccountInfo {
     }
 
     /**
-     * Obtient la valeur de la propriété accountNumber.
+     * Obtient la valeur de la propriété bill.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BillInfo }
+     *     
+     */
+    public BillInfo getBill() {
+        return bill;
+    }
+
+    /**
+     * Définit la valeur de la propriété bill.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BillInfo }
+     *     
+     */
+    public void setBill(BillInfo value) {
+        this.bill = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété accountID.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getAccountNumber() {
-        return accountNumber;
+    public String getAccountID() {
+        return accountID;
     }
 
     /**
-     * Définit la valeur de la propriété accountNumber.
+     * Définit la valeur de la propriété accountID.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setAccountNumber(String value) {
-        this.accountNumber = value;
+    public void setAccountID(String value) {
+        this.accountID = value;
     }
 
     /**
-     * Obtient la valeur de la propriété amount.
-     * 
-     */
-    public double getAmount() {
-        return amount;
-    }
-
-    /**
-     * Définit la valeur de la propriété amount.
-     * 
-     */
-    public void setAmount(double value) {
-        this.amount = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété credit.
-     * 
-     */
-    public double getCredit() {
-        return credit;
-    }
-
-    /**
-     * Définit la valeur de la propriété credit.
-     * 
-     */
-    public void setCredit(double value) {
-        this.credit = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété strCreationDate.
+     * Obtient la valeur de la propriété creancier.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getStrCreationDate() {
-        return strCreationDate;
+    public String getCreancier() {
+        return creancier;
     }
 
     /**
-     * Définit la valeur de la propriété strCreationDate.
+     * Définit la valeur de la propriété creancier.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setStrCreationDate(String value) {
-        this.strCreationDate = value;
+    public void setCreancier(String value) {
+        this.creancier = value;
     }
 
     /**
-     * Obtient la valeur de la propriété accountType.
+     * Obtient la valeur de la propriété status.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getAccountType() {
-        return accountType;
+    public String getStatus() {
+        return status;
     }
 
     /**
-     * Définit la valeur de la propriété accountType.
+     * Définit la valeur de la propriété status.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setAccountType(String value) {
-        this.accountType = value;
+    public void setStatus(String value) {
+        this.status = value;
     }
 
 }
