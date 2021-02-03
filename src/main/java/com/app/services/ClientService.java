@@ -2,16 +2,13 @@ package com.app.services;
 
 import com.app.entity.Client;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "client-service",url = "http://ensaspay-client-service.herokuapp.com/api/client")
+@FeignClient(name = "client-service",url = "https://ensaspay-zuul-gateway.herokuapp.com/api/client")
 public interface ClientService {
     @PostMapping("/create")
-    public Client createClient(@RequestBody Client client);
+    public Client createClient(@RequestHeader("Authorization") String token,@RequestBody Client client);
 
     @GetMapping("/cmi/{tel}")
-    public Client cmiChecker(@PathVariable String tel);
+    public Client cmiChecker(@RequestHeader("Authorization") String token,@PathVariable String tel);
 }
