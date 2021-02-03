@@ -110,7 +110,7 @@ public class ClassExchanger {
 
     public Bill generateBill(BillInfo info){
         Bill bill=new Bill(info.getId(),info.getAmount(),
-                null,null,false,false,info.getCodeCreance());
+                null,null,info.getPayed(),info.getIsBatched(),info.getCodeCreance());
         return bill;
     }
 

@@ -82,6 +82,14 @@ public class BillInfo {
         this.id = value;
     }
 
+    public boolean getPayed(){
+        return payed;
+    }
+
+    public boolean getIsBatched(){
+        return isBatched;
+    }
+
     /**
      * Obtient la valeur de la propriété amount.
      * 
