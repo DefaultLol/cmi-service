@@ -121,6 +121,7 @@ public class ClassExchanger {
         info.setCreancier(payment.getCreancier());
         info.setId(payment.getId());
         info.setStatus(payment.getStatus());
+        
         return info;
     }
 
