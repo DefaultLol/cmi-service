@@ -38,6 +38,10 @@ public class PaymentController {
     @ResponsePayload
     public PaymentResponse payBill(@RequestPayload PaymentRequest request) throws DatatypeConfigurationException {
         PaymentResponse response=new PaymentResponse();
+        if(paymentService.check_batch(request.getBillID())){
+            response.setResponse("Already batched");
+            return response;
+        }
         Bill bill = billService.getBill(request.getCreancier(),request.getBillID());
         paymentService.paymentRequest(bill,request.getAccountID(),request.getCreancier());
         response.setResponse("Request waiting for approval");
@@ -53,7 +57,6 @@ public class PaymentController {
         for(PaymentOpInfo payment:payments){
             response.getPayments().add(payment);
         }
-
         return response;
     }
 }

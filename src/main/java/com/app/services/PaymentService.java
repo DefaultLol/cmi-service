@@ -51,5 +51,15 @@ public class PaymentService {
         return response;
     }
 
+    public boolean check_batch(Long idBill){
+        List<PaymentOp> payments=repo.findAll();
+        for(PaymentOp payment:payments){
+            if(payment.getBill().getId().equals(idBill)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }

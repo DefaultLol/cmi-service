@@ -41,12 +41,12 @@ public class AppApplication {
         return new RestTemplate();
     }
 
-    @Bean
+    /*@Bean
     CommandLineRunner start(){
         return args -> {
             populateDB.populateCreancier();
         };
-    }
+    }*/
 
     //@Scheduled(cron = "0 21 16 * * ?")
     public void createClientJob() throws Exception{
