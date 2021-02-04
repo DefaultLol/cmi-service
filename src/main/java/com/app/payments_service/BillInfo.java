@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2021.02.03 à 08:39:44 PM WET 
+// Généré le : 2021.02.03 à 11:54:46 PM WET 
 //
 
 
@@ -82,14 +82,6 @@ public class BillInfo {
         this.id = value;
     }
 
-    public boolean getPayed(){
-        return payed;
-    }
-
-    public boolean getIsBatched(){
-        return isBatched;
-    }
-
     /**
      * Obtient la valeur de la propriété amount.
      * 
@@ -104,6 +96,14 @@ public class BillInfo {
      */
     public void setAmount(double value) {
         this.amount = value;
+    }
+
+    public boolean getPayed(){
+        return payed;
+    }
+
+    public boolean getIsBatched(){
+        return isBatched;
     }
 
     /**
