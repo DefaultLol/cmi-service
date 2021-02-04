@@ -27,8 +27,7 @@ public class BillService {
 
     public ClientPaymentInfo getBills(String creancier,String genericID,String codeCreance) throws DatatypeConfigurationException {
         ClientPayment info=restTemplate.getForObject(url+creancier+"/payment/"+genericID+"/"+codeCreance,ClientPayment.class);
-        System.out.println("hahahahahahhahaha");
-        System.out.println(info.getBills().get(0).getPayed());
+
 
         return classExchanger.generateClientPaymentInfo(info);
     }
