@@ -28,10 +28,8 @@ public class PaymentItemWriter implements ItemWriter<PaymentOp> {
             if(payment.getStatus().equals("pending") && !payment.getBill().getPayed()){
                 // if success set bill to payed
                 Bill bill=billService.payBill(payment.getBill(),payment.getCreancier());
-                // if success set payment to closed
-                payment.getBill().setPayed(true);
                 //take credit from amount and save historique in account service
-                PaymentRequest paymentRequest=new PaymentRequest(payment.getBill(),payment.getCreancier(),payment.getAccountID());
+                PaymentRequest paymentRequest=new PaymentRequest(bill,payment.getCreancier(),payment.getAccountID());
                 accountService.payBill(token,paymentRequest);
 
                 payment.setStatus("closed");

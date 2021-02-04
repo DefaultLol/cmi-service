@@ -33,9 +33,9 @@ public class PaymentService {
             AddCreditRequest request=new AddCreditRequest(accountID,bill.getAmount());
             String text=accountService.addCredit(token,request);
             System.out.println(text);
-            PaymentOp paymentOp=new PaymentOp(null,bill,accountID,creancier,"pending");
+            Bill batchedBill=billService.batchBill(bill,creancier);
+            PaymentOp paymentOp=new PaymentOp(null,batchedBill,accountID,creancier,"pending");
             repo.save(paymentOp);
-            billService.batchBill(bill,creancier);
         }
         catch(Exception e){
             System.out.println("Error auth");
